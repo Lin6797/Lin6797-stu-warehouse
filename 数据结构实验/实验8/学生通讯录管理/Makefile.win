@@ -1,0 +1,34 @@
+# Project: 学生通讯录管理
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Student_main.o Student_detail.o Student_infile.o
+LINKOBJ  = Student_main.o Student_detail.o Student_infile.o
+LIBS     = -L"H:/C++/DevCpp/64位/MinGW64/lib32" -L"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -pg
+INCS     = -I"H:/C++/DevCpp/64位/MinGW64/include" -I"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"H:/C++/DevCpp/64位/MinGW64/include" -I"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = 学生通讯录管理.exe
+CXXFLAGS = $(CXXINCS) -m32 -pg
+CFLAGS   = $(INCS) -m32 -pg
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Student_main.o: Student_main.cpp
+	$(CPP) -c Student_main.cpp -o Student_main.o $(CXXFLAGS)
+
+Student_detail.o: Student_detail.cpp
+	$(CPP) -c Student_detail.cpp -o Student_detail.o $(CXXFLAGS)
+
+Student_infile.o: Student_infile.cpp
+	$(CPP) -c Student_infile.cpp -o Student_infile.o $(CXXFLAGS)

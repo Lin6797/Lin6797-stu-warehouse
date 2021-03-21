@@ -1,0 +1,37 @@
+# Project: 实验4
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Tree_detail.o Stack_detail.o Queue_detail.o
+LINKOBJ  = main.o Tree_detail.o Stack_detail.o Queue_detail.o
+LIBS     = -L"H:/C++/DevCpp/64位/MinGW64/lib32" -L"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -pg
+INCS     = -I"H:/C++/DevCpp/64位/MinGW64/include" -I"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"H:/C++/DevCpp/64位/MinGW64/include" -I"H:/C++/DevCpp/64位/MinGW64/x86_64-w64-mingw32/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"H:/C++/DevCpp/64位/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = 实验4.exe
+CXXFLAGS = $(CXXINCS) -m32 -pg
+CFLAGS   = $(INCS) -m32 -pg
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Tree_detail.o: Tree_detail.cpp
+	$(CPP) -c Tree_detail.cpp -o Tree_detail.o $(CXXFLAGS)
+
+Stack_detail.o: Stack_detail.cpp
+	$(CPP) -c Stack_detail.cpp -o Stack_detail.o $(CXXFLAGS)
+
+Queue_detail.o: Queue_detail.cpp
+	$(CPP) -c Queue_detail.cpp -o Queue_detail.o $(CXXFLAGS)
